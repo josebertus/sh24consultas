@@ -1,0 +1,506 @@
+@import "../valo/valo.scss";
+
+
+@mixin itacatheme {
+
+	$v-font-size: 12px;
+	
+	$v-unit-size: 26px;
+	$v-unit-size--small: 20px;
+	$v-unit-size--tiny: 18px;
+	
+	$v-layout-margin-top: 2px;
+	$v-layout-margin-right: 2px;
+	$v-layout-margin-bottom: 2px;
+	$v-layout-margin-left: 2px;
+	$v-layout-spacing-vertical: 5px;
+	$v-layout-spacing-horizontal: 4px;
+
+	@include valo;
+   
+   
+   	/* ------------------------------- */
+   	$colorCorporativo1: orange;
+   	$colorCorporativo2: silver;
+   	$colorCorporativo3: silver;
+   	$colorCorporativo4: silver;
+   	
+	$colorFondo: silver;
+	$colorFondoDetalles: $colorCorporativo1;
+	$colorTextoDetalles: white;
+	$colorFondoMenu: #F6D017;
+	$colorTextoMenu: #171695;
+	$colorFondoCabecera: #171695;
+	$colorFondoPie: gray;
+	
+	$sizeTexto: 13px;
+	$sizeTexto2: 10px;
+	
+	$colorFondoTitulo: gray;
+	$colorTextoTitulo: white;
+	
+	$colorFondoTitulo2: white;
+	$colorTextoTitulo2: black;
+	
+	$bordes: 1px solid black;
+	$bordesSeccion: 1px solid black;
+	$bordesSubpantalla: 1px dotted red;
+	$bordesTabla: 1px dotted #F6D017;
+	
+	$colorFondoCabeceraTabla: black;
+	$colorTextoCabeceraTabla: white;
+	$colorFondoFilaTabla1: white;
+	$colorTextoFilaTabla1: black;
+	$colorFondoFilaTabla2: gray;
+	$colorTextoFilaTabla2: white;
+	$bordesFilasTabla: 1px solid #F6D017;
+	
+	$colorFondoBoton: blue;
+	$colorFondoBotonSh: #F6D017;
+	$colorFondoBoton2: gray;
+	$bordeBoton: 1px solid black;
+	$colorTextoBoton: white;
+	$sizeTextoBoton: 12px;
+	
+	$sizeTextoPaginacion: 12px;
+	$alturaBotonPaginacion: 20px;
+	/* ------------------------------- */
+	
+	.botton-logout {
+      @include valo-button-style($background-color: white);
+      width:300px;
+      color:red;
+    }
+	
+   	.login-panel {
+    @include valo-panel-style;
+    padding: round($v-unit-size / 1.5) round($v-unit-size / 1.5);
+    min-width: $v-font-size * 13;
+    max-width: 100%;
+    max-height:200%;
+    @include animation(valo-animate-in-slide-down 1000ms 10ms backwards, valo-animate-in-fade 600ms 100ms backwards);
+	
+  }
+  
+   	.loginfondo-panel {
+    @include valo-panel-style;
+    padding: round($v-unit-size / 1.5) round($v-unit-size / 1.5);
+    min-width: $v-font-size * 13;
+    max-width: 100%;
+    background-color: #F6D017;
+    @include animation(valo-animate-in-slide-down 1000ms 10ms backwards, valo-animate-in-fade 600ms 100ms backwards);
+	
+  }  
+   
+   .menu-panel {
+    @include valo-panel-style;
+    @include animation(valo-animate-in-slide-right 1000ms 10ms backwards, valo-animate-in-fade 600ms 100ms backwards);
+    padding-right: 0px;	  
+	padding-left: 10px;
+    min-width: $v-font-size * 13;
+    max-width: 100%; 
+    background-color: $colorFondoMenu;
+    border: none;  
+    color: $colorTextoMenu;  
+    font-weight: bold;
+    position: relative;
+    left: -150px;
+    transition-property: left;
+  	transition-duration: 1s, 1s;
+  	transition-delay: 0s, 1s; 
+  	z-index: 1; 
+  	border-radius: 0px;
+	box-shadow: 0 0px 0px black;
+	-webkit-box-shadow: 0 0px 0px black;
+   }
+   
+    .menu-panel:hover {
+    left: 0px;
+    }
+    
+	.usuarios-view {
+    @include valo-panel-style;    
+    min-width: $v-font-size * 20;
+    max-width: 100%;
+    border: none;
+    @include animation(valo-animate-in-slide-down 1000ms 10ms backwards, valo-animate-in-fade 600ms 100ms backwards);
+	
+  }
+ 	.panelUI {	
+    background-color: #197de1;
+	background: none;
+	color: none;	
+	}  
+   
+    .v-button {	
+    background-color: #197de1;
+	background: #197de1;
+	border-radius: 4px;
+	border: 1px solid #1362b1;
+	border-top-color: #156ab3;
+	border-bottom-color: #1156a8;
+	font-weight: bold;
+	background-image: -webkit-linear-gradient(top, #1b87e3 2%, #166ed5 98%);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05);
+	background-image: -webkit-linear-gradient(top, #1b87e3 2%, #166ed5 98%);
+	background-image: linear-gradient(to bottom,#1b87e3 2%, #166ed5 98%);
+	-webkit-box-shadow: inset 0 1px 0 #4d98e6, inset 0 -1px 0 #166bca, 0 2px 3px rgba(0, 0, 0, 0.05);
+	box-shadow: inset 0 1px 0 #4d98e6, inset 0 -1px 0 #166bca, 0 2px 3px rgba(0, 0, 0, 0.05);
+	color: white;	
+	}
+
+	 .v-icon {
+ 	float: right;
+	 }
+	
+	.v-tree-node-caption span {
+	 padding-right: 50px;
+	}
+   
+	/* ------ ITACA ---------*/
+	.v-panel{
+	border-radius: 0px;
+	box-shadow: 0 0px 0px black;
+	-webkit-box-shadow: 0 0px 0px black;
+	border: 0px solid black;
+	background-color: transparent;
+	}
+	
+	
+	.mainlogo-panel {
+    
+    @include animation(valo-animate-in-slide-down 1000ms 10ms backwards, valo-animate-in-fade 600ms 100ms backwards);
+    z-index: 2;
+    background-color: #171695;
+    height:200%;
+    border-radius: 0px;
+	box-shadow: 0 0px 0px black;
+	-webkit-box-shadow: 0 0px 0px black;
+	border: 0px solid black;
+   	}
+   		
+	.main-panel {
+    @include valo-panel-style;
+    @include animation(valo-animate-in-slide-down 1000ms 10ms backwards, valo-animate-in-fade 600ms 100ms backwards);
+    z-index: 2;
+    background-color: #171695;
+    border-radius: 0px;
+	box-shadow: 0 0px 0px black;
+	-webkit-box-shadow: 0 0px 0px black;
+	border: 0px solid black;
+   	}
+	.head-panel {
+    background-color: $colorFondoCabecera;
+   	}  
+   	
+   	.aboutPie{
+   	font-weight: bold;
+   	}
+   	.pie{
+   	width:100%;
+	border-top: 0px solid black;
+	background-color: $colorFondoPie;
+	text-align: center;
+	padding: 2px;
+	}
+   	.views-panel {
+   	background-color: #D2D2D2;
+   	/*border: 2px dashed red;*/
+   	height: 100%;
+   	@include animation(valo-animate-in-slide-down 800ms 10ms backwards, valo-animate-in-fade 800ms 100ms backwards);
+	}
+	.v-window-contents { 
+		.v-scrollable:before {
+		border: 0px;
+		}
+	}
+	
+	.v-textfield-readonly {
+	background: transparent;
+	background-color: transparent;
+	border: none;
+	}
+	.v-datefield.v-readonly [class*="textfield"]  {
+	background: transparent;
+	background-color: transparent;
+	border: none;
+	}
+	.v-datefield.v-readonly [class*="button"]{
+	border: none;
+	}
+	select:disabled {
+	background: transparent;
+	background-color: transparent;
+	background-image: none;
+	border: none;
+	}
+	
+	.v-datefield-popup-campoHoraLocal .v-datefield-calendarpanel-header {
+	display:none
+	}
+ 	.v-datefield-popup-campoHoraLocal .v-datefield-calendarpanel-body{
+	display:none
+	}
+	.v-datefield-popup-campoHoraLocal .v-datefield-calendarpanel-weekdays{
+	display:none;
+	}
+	
+	/* -------- PANTALLA BASE -------- */
+	
+	.tituloLogin{
+	margin: 2px;
+	padding:2px;
+	text-align:right;
+	font-weight: bold;
+	color: white;
+	}
+		
+	.cabecera {
+	width: 100%;
+	display: table;
+	/*border: 2px dashed blue;*/
+	}
+	.v-slot-codigoCabecera{
+	display: table-cell;
+	}
+	.codigoCabecera{
+	margin: 2px;
+	padding: 2px;
+	background-color: $colorFondoTitulo;
+	color: $colorTextoTitulo;
+	font-weight: bold;
+	border: $bordes;
+	}
+	.v-slot-tituloCabecera{
+	width: 100%;
+	display: table-cell;
+	}
+	.tituloCabecera{
+	margin: 2px;
+	padding:2px;
+	font-weight: bold;
+	border: $bordes;
+	display: block;
+	text-align: center;
+	background-color: $colorFondoTitulo2;
+	color: $colorTextoTitulo2;
+	}
+	.textoNavegacion{
+	margin: 2px;
+	margin-left: 10px;
+	padding:2px;
+	font-size: $sizeTexto2;
+	display: block;
+	text-align: center;
+	}
+	.contenedorUI{
+	/*background-color: #efefef;*/
+	/*border: 2px dashed green;*/
+	height: 100%;
+	@include animation(valo-animate-in-slide-down 800ms 10ms backwards, valo-animate-in-fade 800ms 100ms backwards);
+	}
+	.cuerpo{
+	padding: 5px; 
+	padding-top: 0px;
+	/*border: 2px dashed orange;*/
+	}
+	.v-slot-pantallaBasePanel{
+	height: 100%;
+	}
+	.pantallaBasePanel{
+	/*border: 2px dashed blue;*/
+	height: 100%;
+	}
+
+	/* -------- SECCION -------- */
+	.v-slot-seccion{
+	padding: 5px;
+	}
+	.seccion{
+	margin-top: 5px;
+	}
+	.cabeceraSeccion {
+	width: 100%;
+	display: table;
+	font-size: $sizeTexto2;
+	}
+	.v-slot-botonSeccion{
+	display: table-cell;
+	}
+	.v-slot-tituloSeccion{
+	width: 100%;
+	display: table-cell;
+	}
+	.botonSeccion{
+	width:20px;
+	height: auto;
+	padding:2px;
+	font-size: $sizeTexto2;
+	border-radius: 0px;
+	background-image: none;
+	border: $bordes;
+	color: $colorTextoDetalles;
+	font-weight: bold;
+	background-color: $colorFondoDetalles;
+	border: $bordes;
+	border-left:none;
+	-webkit-box-shadow: inset 0 0px 0 black, inset 0 0px black, 0 0px 0px black;
+	}
+	.tituloSeccion{
+	width:100%;
+	font-weight: bold;
+	color: $colorTextoTitulo;
+	font-size: $sizeTexto2;
+	background-color: $colorFondoTitulo;
+	padding: 2px;
+	border:$bordes;
+	}
+	.contenidoSeccion{
+	padding: 2px;
+	border: $bordesSeccion;
+	border-top:none;
+	width: 100%;
+	}
+
+	/* -------- BOTON -------- */
+	.boton {
+	margin: 3px;
+	padding: 4px 6px 4px 6px;
+	font-size: $sizeTextoBoton;
+	height: auto;
+	}
+	
+	/* -------- V.MODAL ------ */
+	.v-slot-contenedorVentanaModal{
+	height: 0px;
+	}
+	.contenedorVentanaModal{
+	height: 0px;
+	}
+	.contenidoVentanaModal{
+	padding: 5px;
+	}
+	.tituloVentanaModal{
+	background-color: $colorFondoTitulo;
+	text-align:center;
+	vertical-align: middle;
+	height:40px;
+	line-height: 40px;
+	/*border-bottom: 1px dotted gray;*/
+	font-weight: bold;
+	color: $colorTextoTitulo;
+	}
+	
+	/* ------ PANEL SP -------*/
+	.panelSubpantalla{
+	border: $bordesSubpantalla;
+	}
+	
+	/* ------ TABLA -------*/
+	.contenedorTabla{
+	border: $bordesTabla;	
+	margin-top: 1px;
+	text-align: center;
+	}
+	.v-table-header-wrap{
+	border:none;
+	height:10px;
+	}
+	.v-table-body{
+	border: none;
+	}
+	/*.v-table-caption-container{
+	border-left: $bordesFilasTabla;
+	height: auto;
+	}
+	.v-table-cell-content{
+	border-left: $bordesFilasTabla;
+	height: auto;
+	}*/
+	.v-table-table td{
+	border-top: none;
+	}
+	.v-table-table{
+	-webkit-box-shadow: 0 0 0 0px black;
+    box-shadow: 0 0 0 0px black;
+	}
+	.v-table-resizer {
+	display: none;
+	width: 0px;
+	right: 0px;
+	left: 0px;
+	margin-left: 0px;
+	}
+	.v-table-caption-container{
+	border:$bordesFilasTabla;
+	border-left: none;
+	margin-right: 0px;
+	}
+	.v-table-header td:first-child{
+	border-left: $bordesFilasTabla;
+	}
+	.v-table-header td:last-child{
+	border-right: $bordesFilasTabla;
+	}
+	.v-table-header{
+	background-color: $colorFondoCabeceraTabla;
+	font-size:12px;
+	color: $colorTextoCabeceraTabla;
+	}
+	.v-table-row{
+	background-color: $colorFondoFilaTabla1;
+	color: $colorTextoFilaTabla1;
+	}
+	.v-table-row-odd{
+	background-color: $colorFondoFilaTabla2;
+	color: $colorTextoFilaTabla2;
+	}
+	.tabla{
+	background-color: transparent;
+	} 
+	.v-table-cell-content-celda{
+	border: $bordesFilasTabla;
+	border-right: none;
+	}
+	.v-table-cell-content-celda:first-child{
+	border-left: $bordesFilasTabla;
+	}
+	.v-table-cell-content-celda:last-child{
+	border-right: $bordesFilasTabla;
+	}
+	.tablaBotonAccion{
+	margin: 1px;
+	}
+	.celdaBotonAccion{
+	text-align: center;
+	}
+	.tablaBotonPaginacion{
+	height: $alturaBotonPaginacion;
+	font-size: $sizeTextoPaginacion;
+	margin: 2px; 
+	}
+	.tablaTextoPaginacion{
+	font-weight: bold;
+	font-size: $sizeTextoPaginacion;
+	margin: 3px; 
+	}
+	
+	.border1 {
+    	border-bottom-style: dotted;
+    	border-width: 1px;
+	}
+		
+	.toolbar2 .v-button {      
+      background: transparent;
+      border: none;
+      text-align: center;
+      width: 30px;
+      height: 25px; 
+	}
+	
+	.color1:hover { 
+    	color: blue;
+	}
+	
+	
+}

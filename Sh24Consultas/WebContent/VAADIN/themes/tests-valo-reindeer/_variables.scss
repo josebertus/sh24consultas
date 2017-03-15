@@ -1,0 +1,945 @@
+$v-app-loading-text: "Solicitando peticion... Por favor espere";
+
+.v-generated-body .v-app .v-app-loading { 
+	height: 100%; 
+	width: 100%;
+	background-image: url("img/logosh24.jpg");
+	background-repeat: no-repeat;
+	background-position: 50%;
+}
+
+
+$v-font-size: 12px;
+$v-font-family: Arial;
+
+$v-unit-size: 20px;
+$v-unit-size--small: 18px;
+$v-unit-size--tiny: 16px;
+
+$v-layout-margin-top: 5px;
+$v-layout-margin-right: 18px;
+$v-layout-margin-bottom: 5px;
+$v-layout-margin-left: 18px;
+$v-layout-spacing-vertical: 7px;
+$v-layout-spacing-horizontal: 6px;
+
+$v-panel-border: 0;
+
+
+@import "../valo/valo.scss";
+
+
+
+   
+   	/* ------------------------------- */
+   	$colorCorporativo1: #171695;
+   	$colorCorporativo2: #F6D017;
+   	$colorCorporativo3: silver;
+   	$colorCorporativo4: silver;
+   	
+	$colorFondo: silver;
+	$colorFondoDetalles: $colorCorporativo1;
+	$colorTextoDetalles: white;
+	$colorFondoMenu: #F6D017;
+	$colorTextoMenu: #171695;
+	$colorFondoCabecera: #171695;
+	$colorFondoPie: gray;
+	
+	$sizeTexto: 13px;
+	$sizeTexto2: 10px;
+	
+	$colorFondoTitulo: gray;
+	$colorTextoTitulo: white;
+	
+	$colorFondoTitulo2: white;
+	$colorTextoTitulo2: black;
+	
+	$bordes: 1px solid black;
+	$bordesSeccion: 1px solid black;
+	$bordesSubpantalla: 1px dotted red;
+	$bordesTabla: 1px dotted #F6D017;
+	
+	$colorFondoCabeceraTabla: #171695;
+	$colorTextoCabeceraTabla: white;
+	$colorFondoFilaTabla1: white;
+	$colorTextoFilaTabla1: black;
+	$colorFondoFilaTabla2: gray;
+	$colorTextoFilaTabla2: black;
+	$bordesFilasTabla: 1px solid #F6D017;
+	
+	$colorFondoBoton: blue;
+	$colorFondoBotonSh: #F6D017;
+	$colorFondoBoton2: gray;
+	$bordeBoton: 1px solid black;
+	$colorTextoBoton: white;
+	$sizeTextoBoton: 12px;
+	
+	$sizeTextoPaginacion: 12px;
+	$alturaBotonPaginacion: 20px;
+	/* ------------------------------- */
+	
+
+	
+   	.login-panel {
+    @include valo-panel-style;
+    padding: round($v-unit-size / 1.5) round($v-unit-size / 1.5);
+    min-width: $v-font-size * 13;
+    max-width: 100%;
+    max-height:200%;
+    @include animation(valo-animate-in-slide-down 1000ms 10ms backwards, valo-animate-in-fade 600ms 100ms backwards);
+	
+  }
+  
+   	.loginfondo-panel {
+    @include valo-panel-style;
+    padding: round($v-unit-size / 1.5) round($v-unit-size / 1.5);
+    min-width: $v-font-size * 13;
+    max-width: 100%;
+    background-color: #F6D017;
+    @include animation(valo-animate-in-slide-down 1000ms 10ms backwards, valo-animate-in-fade 600ms 100ms backwards);
+	
+  }  
+  
+	  .v-ui > .v-widget {
+	   overflow: visible;
+	}
+   
+   .menu-panel {
+    @include valo-panel-style;
+    @include animation(valo-animate-in-slide-right 1000ms 10ms backwards, valo-animate-in-fade 600ms 100ms backwards);
+    padding-right: 10px;	  
+	padding-left: 10px;
+    background-color: $colorFondoMenu;
+    border: none;  
+    color: $colorTextoMenu;  
+  	border-radius: 0px;
+  	widht:100%;
+  	height:32px;
+
+
+   }
+   
+    .menu-panel:hover {
+    left: 0px;
+    }
+    
+	.usuarios-view {
+    @include valo-panel-style;    
+    min-width: $v-font-size * 20;
+    max-width: 100%;
+    border: none;
+    @include animation(valo-animate-in-slide-down 1000ms 10ms backwards, valo-animate-in-fade 600ms 100ms backwards);
+	
+  }
+ 	.panelUI {	
+    background-color: #197de1;
+	background: none;
+	height:100%;
+	color: none;	
+	overflow: visible;
+	
+	}
+	
+    .opcion_menu {	
+
+		font-weight: bold;
+	}  
+   
+
+
+	 .v-icon {
+ 	float: right;
+	 }
+	
+	.v-tree-node-caption span {
+	 padding-right: 50px;
+	}
+   
+	/* ------ ITACA ---------*/
+
+	
+	.panel-principal > div {
+	
+			border-top:0px;
+			
+
+	        .v-panel-caption   {
+	                
+	                background: #CCCCCC;
+	                border-radius: 0px;
+	                font-weight: bold;
+					color: $colorCorporativo1;
+	        }
+
+	 }
+	 
+	
+	
+	.v-panel-content {
+	  height: 100px;
+	}
+	
+	.mainlogo-panel {
+    
+    @include animation(valo-animate-in-slide-down 1000ms 10ms backwards, valo-animate-in-fade 600ms 100ms backwards);
+    z-index: 2;
+    background-color: #171695;
+    height:200%;
+    border-radius: 0px;
+	box-shadow: 0 0px 0px black;
+	-webkit-box-shadow: 0 0px 0px black;
+	border: 0px solid black;
+	overflow:true;
+   	}
+   		
+	.main-panel {
+    @include animation(valo-animate-in-slide-left 1000ms 10ms backwards, valo-animate-in-fade 600ms 100ms backwards);
+    z-index: 2;
+    background-color: $colorFondoMenu;
+    height:100%;
+    overflow: visible;
+   	}
+   	
+ 
+	.head-panel {
+    background-color: $colorFondoCabecera;
+   	}  
+   	
+
+   	.views-panel {
+   	background-color: red;
+   	border: 0px;
+   	height: 100%;
+   	overflow: visible;
+   	@include animation(valo-animate-in-slide-right 800ms 10ms backwards, valo-animate-in-fade 800ms 100ms backwards);
+	}
+	
+	
+	.v-window-contents { 
+		.v-scrollable:before {
+		border: 0px;
+		background-color:red;
+		overflow: visible;
+		
+		}
+	}
+	
+
+	
+	/* -------- PANTALLA BASE -------- */
+	
+	.tituloLogin{
+	margin: 2px;
+	padding:2px;
+	text-align:right;
+	font-weight: bold;
+	color: white;
+	}
+		
+	.cabecera {
+	width: 100%;
+	display: table;
+	/*border: 2px dashed blue;*/
+	}
+	
+
+	.v-slot-codigoCabecera{
+	display: table-cell;
+	}
+	.codigoCabecera{
+	margin: 2px;
+	padding: 2px;
+	background-color: $colorFondoTitulo;
+	color: $colorTextoTitulo;
+	font-weight: bold;
+	border: $bordes;
+	}
+	.v-slot-tituloCabecera{
+	width: 100%;
+	display: table-cell;
+	}
+	.tituloCabecera{
+	margin: 2px;
+	padding:2px;
+	font-weight: bold;
+	border: $bordes;
+	display: block;
+	text-align: center;
+	background-color: $colorFondoTitulo2;
+	color: $colorTextoTitulo2;
+	}
+	.textoNavegacion{
+	margin: 2px;
+	margin-left: 10px;
+	padding:2px;
+	font-size: $sizeTexto2;
+	display: block;
+	text-align: center;
+	}
+	.contenedorUI{
+	/*background-color: #efefef;*/
+	/*border: 2px dashed green;*/
+	height: 100%;
+	@include animation(valo-animate-in-slide-down 800ms 10ms backwards, valo-animate-in-fade 800ms 100ms backwards);
+	}
+
+
+
+
+	
+	.layout-lineas-juntas    {
+    padding-bottom: 1px;
+    margin-left: 0px;
+    padding-top: 0px;
+    padding-left:  7px;
+	}	
+	
+
+	
+	/* ------ PANEL SP -------*/
+	.panelSubpantalla{
+	border: $bordesSubpantalla;
+	}
+	
+	
+	/* -------- PANTALLA BASE -------- */
+	
+	.tituloLogin{
+	margin: 2px;
+	padding:2px;
+	text-align:right;
+	font-weight: bold;
+	color: #c5c5c5;
+	}
+		
+	.cabecera {
+	width: 100%;
+	display: none;
+	/*border: 2px dashed blue;*/
+	}
+
+	.codigoCabecera{
+	margin: 2px;
+	padding: 2px;
+	background-color: $colorFondoTitulo;
+	color: $colorTextoTitulo;
+	font-weight: bold;
+	border: $bordes;
+	}
+
+	
+	
+	.contenedorUI{
+	background-color: #efefef;
+	height: 100%;
+	overflow: visible;
+	@include animation(valo-animate-in-slide-down 800ms 10ms backwards, valo-animate-in-fade 800ms 100ms backwards);
+	}
+	
+	.cuerpo{
+	padding: 5px; 
+	padding-top: 0px;
+	background-color: #efefef;
+	height:100%;
+	/*border: 2px dashed orange;*/
+	}
+	.v-slot-pantallaBasePanel{
+	height: 100%;
+	overflow: visible;
+	
+	}
+	.pantallaBasePanel{
+	/*border: 2px dashed blue;*/
+	height: 100%;
+	}	
+	
+	
+	/*******+ tabla ************/
+	.v-table-header{
+	background-color: $colorFondoCabeceraTabla;
+	color: $colorTextoCabeceraTabla;
+	}
+	
+
+
+		
+	.v-table-row{
+	background-color: $colorFondoFilaTabla1;
+	color: $colorTextoFilaTabla1;
+	height:10px;
+	}
+	.v-table-row-odd{
+	background-color: $colorFondoFilaTabla2;
+	color: $colorTextoFilaTabla2;
+	
+	}
+	
+	.v-table-row:hover, .v-table-row-odd:hover {
+	    color: $colorCorporativo1;
+		font-weight: bold;
+		font-color: $colorCorporativo1;
+	}		
+
+	
+	/********** colores filas ******/
+	.v-table .v-table-cell-content-red {
+	    color: red;
+	}
+
+	/********** colores filas ******/
+	.v-table .v-table-cell-content-green {
+	    color: darkgreen;
+	}	
+	
+	.v-table .v-table-cell-content-normal {
+	    color: $colorTextoFilaTabla2;
+	}
+
+	.v-table .v-table-cell-content-gray {
+	    color: gray;
+	}
+	
+	.v-table .v-table-cell-content-orange {
+	    color: #DC7633;
+	}			
+	
+	
+	
+
+
+	  
+    
+    /******* validaciones **********/
+	.v-validatedtextfield.invalid,
+	.v-validatedtextfield.valid,
+	.v-validatedtextfield-required,
+	.v-validatedtextfield-required invalid,  
+	.v-validatedtextfield-required valid,  
+	.v-validatedtextfield-focus,
+	.v-validatedtextfield-focus valid,
+	.v-validatedtextfield-focus invalid,
+	.v-textfield,
+	.v-textfield invalid,
+	.v-textfield valid,
+	.v-textfield-focus.invalid,
+	.v-textfield-focus.valid,
+	.v-textfield.invalid
+	.v-textfield.valid
+	{
+	    background: white !important;
+	    background-color: white !important;
+	}    
+	
+.v-accordion {}
+.v-accordion-item {}
+.v-accordion-item-open {}
+.v-accordion-item-first {}
+.v-accordion-item-caption {font-color:white; font-weight: bold; }
+.v-accordion-item-caption .v-caption {}
+.v-accordion-item-content {}
+
+.v-sliderpanel-wrapper .v-sliderpanel-content, .v-sliderpanel-wrapper .v-sliderpanel-tab  {
+  background: #99CCFF;
+  color: #000;
+}
+
+  /* CAPTION FORMULARIO */
+  
+  .caption_top_formulario {
+    background-color: $colorCorporativo1;
+    color: white;
+    font-weight: bold;
+    border-top:1px solid white;
+    border-bottom:0px solid white;
+
+  }
+
+  .caption_top_opcion .v-panel-content-desktop > div {
+    background: red;
+    color: $colorCorporativo1;
+    font-weight: bold;
+    border-top:1px solid white;
+
+
+  }  
+  
+  .vertical-separator {
+	  background:#BBBBBB;
+	  border-right:1px solid gray;
+	  height:100%;
+	  
+	}
+	
+  .horizontal-separator {
+
+  background:#BBBBBB;
+	}	
+  
+  .v-splitpanel-horizontal {
+    border-bottom: 1px solid #CCCCCC;
+  }
+
+.v-gridlayout  {
+	border-collapse: collapse;
+}  
+
+
+  
+  .label-rotation {
+
+
+      -webkit-transform: rotate(-90deg); 
+      -moz-transform: rotate(-90deg); 
+      filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); //For IE support
+      background-color:#F6D017;
+      color: #171695;
+      overflow:hidden;
+      text-align:left;
+      
+     
+      height:55px;
+      
+  }
+  
+  .panel_garantias_pestana  > div {
+    height:100px;
+    background-color:#F6D017;
+    overflow:hidden;
+    
+    font-weight: bold;
+    .v-panel-content {
+	  background-color:#F6D017;
+	  width:10px;
+	  
+	}
+  
+  }
+  
+  
+  /*********************** MENU OPCIONES PRINCIPAL ***************************************/
+    .menu-opciones-panel {
+    
+    position: fixed;
+    @include valo-panel-style;
+    background-color:rgba(80, 163, 237, 0.9);
+    border:1px solid gray;
+    left:100px;
+    width:800px;
+    height:300px;
+    top:-310px;
+    overflow:hidden;
+    z-index: 5000;
+    box-shadow: 2px 2px 5px #999;
+    -webkit-transition: top 0.5s ease;
+    -moz-transition: top 0.5s ease;
+   }
+   
+    .menu-opciones-panel:hover {
+    top: -2px;
+    }
+    
+   .menu-pestana {
+    @include valo-panel-style;
+    position:fixed;
+    background-color:rgba(90, 163, 237, 0);
+    border:0px solid blue;
+    left:85px;
+    width:24px;
+    height:24px;
+    top:2px;
+    z-index: 2000;
+   }
+   
+   .opciones-menu {
+	top:10px;
+	left:20px;
+	width:780px;
+	height:200px;
+	border:0px solid red;
+   }
+   
+
+   
+   .titulo-menu  {
+    color:#F6D017;
+    font-weight:bold;
+   }
+   
+   .titulo-opciones-menu {
+     color:white;
+     cursor:default;
+   }
+   
+   .titulo-opciones-menu:hover { 
+      font-weight:bold;
+      cursor:pointer;
+	}
+	
+   .imagen-opciones-menu {
+   }
+   
+   .imagen-opciones-menu:hover  { 
+     	
+
+	}	   
+   
+ 
+   
+  
+  /********************************************************************************/  
+    
+
+  .garantias-panel {
+    @include valo-panel-style;
+    position: fixed;
+    background-color:#DDDDDD;
+    border:1px solid gray;
+    top: 55px;
+    right:-730px;
+    overflow:hidden;
+    z-index: 1000;
+    -webkit-transition: right 1s;
+    -moz-transition: right 1s;
+   }
+   
+    .garantias-panel:hover {
+    right: -1px;
+    }
+    
+    /******  GRID     *********/
+    
+
+    /******  VENTANAS **********/
+
+	/* ventanamodal */
+	.v-window-ventanamodal .v-window-outerheader {
+	  background: $colorCorporativo2;
+	}
+	
+	/* Blue window caption text */
+	.v-window-ventanamodal  .v-window-header {
+	  color: blue;
+	  text-color:blue;
+	  font-weight: bold;
+	  text-align:center;
+	}
+	
+	/* Pale yellow window contents */
+	.v-window-ventanamodal .v-window-contents {
+	  background: white;
+	  border:1px solid $colorCorporativo2;
+	}
+	
+	/* Close button */
+	.v-window-ventanamodal .v-window-closebox {
+	  background: $colorCorporativo2;
+	  background-color: $colorCorporativo2;
+	  color:blue;
+	} 	
+	
+	.v-window-ventanamodal .v-window-modalitycurtain  {
+	    position: fixed;
+	    top: 0;
+	    right: 0;
+	    bottom: 0;
+	    left: 0;
+	    background-color: #222;
+	    background-image: -webkit-radial-gradient(50% 50%, circle, #222, #030303);
+	    background-image: radial-gradient(  circle at 50% 50%, #222, #030303);
+	    opacity: 0.68;
+	    filter: alpha(opacity=68) ;
+	    -webkit-animation: valo-animate-in-fade 400ms 100ms;
+	    -moz-animation: valo-animate-in-fade 400ms 100ms;
+	    animation: valo-animate-in-fade 400ms 100ms;
+	}
+	
+	.layout_caption {
+					border-top:2px solid darkgray;
+	    	        background: #CCCCCC;
+	                border-radius: 0px;
+	                font-weight: bold;
+					color: $colorCorporativo1;
+					overflow:hidden;
+	}
+	
+
+	.box_blanco {
+		background: white;
+		border:1px solid gray;
+		color:black; 
+		font-weight: bold;
+	}
+		
+	.box_verde {
+		background: #7EB62E;
+		border:1px solid gray;
+		color:white; 
+		font-weight: bold;
+	}
+	
+	.box_rojo {
+		background: #f64b2f;
+		border:1px solid gray;
+		color:black; 
+		font-weight: bold;
+	}
+	
+	.box_naranja {
+		background: orange;
+		border:1px solid gray;
+		color:black; 
+		font-weight: bold;
+	}			
+	
+	.v-tooltip {
+	    width:auto;
+	    height:auto;
+	}
+	
+	.v-tooltip-text {
+	    width:auto;
+	    height:auto;
+	}
+	
+	
+	.borde_rojo {
+	    border:1px solid red;
+	 }
+	 
+	.texto_rojo {
+	    color: red;
+	 }	 
+	 
+
+	.borde_azul {
+	    border:1px solid blue;
+	 }
+	 	 
+	.asistencia .v-formlayout-contentcell   {
+	    padding-bottom: 1px;
+	    padding-top: 0px;
+	    padding-left:10px;
+	    overflow-y: hidden;
+	}
+	
+	
+	.ucase {
+	text-transform: uppercase;
+	}
+	
+	
+	//  COMPENTE AMPLIAR TEXT-AREA
+	
+	.ventana_texto_ampliar {
+	 border:2px solid $colorCorporativo2; 
+	}
+	
+	
+	.texto-capitales .tests-valo-reindeer.v-app {
+	   font: 300 10px/1.55 Arial;
+	   margin-top: 0px;
+	   padding-top:0px;
+	}
+	
+
+	.v-textfield.numerico {
+	    text-align: right;
+	}
+	
+
+	.v-button {
+		
+		height:18px ! important;
+		overflow: hidden ! important;
+	}	
+	
+
+
+
+	
+	.v-window-header {
+	  
+	  background:$colorCorporativo2;
+	 }
+
+
+
+	
+	.v-table [class*="-row"].v-selected {
+	
+		background-color: $colorCorporativo2 !important;
+		background-image: none !important;
+	}
+	
+	
+	.v-upload .v-button 
+	{
+
+	    display:none !important;
+	}
+	
+	.v-upload .v-button-wrap
+	{
+	    height: 31px;
+	    padding: 0 14px;
+	    font-size: 14px;
+	    border-radius: 4px;
+	    display:none;
+	}
+	
+	.sin_overflow {
+	    overflow: hidden !important;
+	    overflow-y: hidden;
+	}
+	
+	.table-electro {
+	    border:1px solid gray;
+	    background-color:#EEEEEE;
+	    
+	}	
+	
+	.panel-alta-garantias  {
+	
+	  height:30px;
+	  background-color: $colorCorporativo1;
+	  border-bottom:2px solid darkgray;
+      background: #CCCCCC;
+      border-radius: 2px;
+      font-weight: bold;
+	  color: $colorCorporativo1;
+	  overflow:hidden;	  
+	
+	}
+	
+	.v-button:focus {
+	 border:2px solid #197de1 !important;
+	 background-image: linear-gradient(to bottom,#1b87e3 2%, #166ed5 98%);
+	 font-text:bold;
+	}
+	
+	.botoninvisible {
+	  left:-100px;
+	}
+	
+	.time-only .v-inline-datefield-calendarpanel-header,
+	.time-only .v-inline-datefield-calendarpanel-body {
+  		display: none;
+	}
+	
+	.aviso {
+	    color: red;
+	    border:     none;
+    	background: white; /* Has shading image by default */
+	}
+	
+	.contador_verde {
+	 font-size: 8px;
+	 text-align:center;
+	 color:green;
+	}
+	
+	.contador_naranja {
+	 font-size: 8px;
+	 text-align:center;
+	 color:orange;
+	}
+	
+	.contador_rojo {
+	 font-size: 8px;
+	 text-align:center;
+	 color:red;
+	}		
+	
+	.mapamini .v-verticallayout > div {
+			width:50px;
+			height:50px;
+			overflow-y: hidden !important;
+			overflow-x: hidden !important;
+	}	
+	
+	.googlemap {
+					
+					overflow-y: hidden !important;
+    				overflow-x: hidden !important;
+					
+	}	
+	
+	.v-verticallayout > div {
+    	overflow-y: auto ! important;
+	}	
+	
+	.cuadrosinbarras {
+	  overflow:hidden;
+	 }
+	 
+	 
+/* Blink for Webkit and others
+(Chrome, Safari, Firefox, IE, ...)
+*/
+
+@-webkit-keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.0;}
+}
+.blink{
+	text-align: center;
+	font-weight: bold;
+	color:red;
+	text-decoration: blink;
+	-webkit-animation-name: blinker;
+	-webkit-animation-duration: 0.6s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:ease-in-out;
+	-webkit-animation-direction: alternate;
+}
+	  
+	
+	
+	.labelh {
+  		display: inline-block;
+	}
+	
+	.panel-detalle > div  {
+			border:1px solid gray;
+            background: #EEEEEE;
+            border-radius: 2px;
+            font-weight: bold;
+			color: $colorCorporativo1;
+			.v-panel-caption   {
+	                background: #CCCCCC;
+	                border-radius: 0px;
+	                font-weight: bold;
+					color: $colorCorporativo1;
+					text-align:center;
+	        }
+	       	.v-panel-content {
+	 				 height: 100px;
+			}
+	 }	
+	 
+	 .v-table input.large {
+    	color:red;
+    	height:20px;
+    	font-size:12px;
+	}
+	
+    .v-table input.large:hover {
+    	border:1px solid red;
+    }
+    
+    .h2 {
+	    font-size: 18px;
+	    line-height:30px;
+	    color: #AA0000;
+	    font-weight:bold;
+	    letter-spacing: 0;
+	    text-shadow: 0 -1px 2px #CCCCCC;
+    }
+    
+
+
+
+	
+
+	
+	
