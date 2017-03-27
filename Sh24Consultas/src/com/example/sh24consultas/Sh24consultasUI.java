@@ -3,9 +3,9 @@ package com.example.sh24consultas;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 
-import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.server.Page;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.server.VaadinServletRequest;
@@ -41,8 +41,21 @@ public class Sh24consultasUI extends UI {
 		HttpServletRequest hsRequest = vsRequest.getHttpServletRequest();
 		String id = hsRequest.getParameter("id");
 		
+		Page.getCurrent().getWebBrowser().getBrowserApplication();
+		if(Page.getCurrent().getWebBrowser().isTouchDevice()){
+			UI.getCurrent().getSession().setAttribute("resolucion","grande");
+			System.out.println("Es touch");
+		}
+		else {
+			UI.getCurrent().getSession().setAttribute("resolucion","pequena");
+			System.out.println("No Es touch");
+		}
 		
-		
+		if (id!=null && id.equals("SRVURG")) {
+
+			ServiciosUrgencia srvUrg = new ServiciosUrgencia();
+	        layout.addComponent(srvUrg);
+}		
 		
 		if (id!=null && id.equals("LIBCON")) {
 	        // opcion gedox liberty
