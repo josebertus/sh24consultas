@@ -1,5 +1,7 @@
 package com.example.sh24consultas;
 
+import java.math.BigDecimal;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 
@@ -53,9 +55,16 @@ public class Sh24consultasUI extends UI {
 		
 		if (id!=null && id.equals("SRVURG")) {
 
-			ServiciosUrgencia srvUrg = new ServiciosUrgencia();
-	        layout.addComponent(srvUrg);
-}		
+
+			java.math.BigDecimal idsms = new BigDecimal(hsRequest.getParameter("idsms"));
+	        if (idsms!=null) {
+	           ServiciosUrgencia srvUrg = new ServiciosUrgencia(idsms);
+		       layout.addComponent(srvUrg);
+ 
+	        }
+	        
+
+		}		
 		
 		if (id!=null && id.equals("LIBCON")) {
 	        // opcion gedox liberty
