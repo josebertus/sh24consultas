@@ -168,6 +168,11 @@ public class ServiciosUrgencia extends CustomComponent  {
         	btSi.setVisible(false);
         	btNo.setVisible(false);
         }
+        if (operacionAceptada.equals("E")) {
+        	lbMensaje.setValue("Esta operación ya ha expirado. No se puede volver a realizar");
+        	btSi.setVisible(false);
+        	btNo.setVisible(false);
+        }        
         
         
         // Eventos botones Si o No
