@@ -23,7 +23,8 @@ public class Sh24consultasUI extends UI {
 
 	
 	private ExpedientesPolizas expPolizas;
-	private DocsLiberty gedoxLiberty;		
+	private DocsLiberty gedoxLiberty;
+	private AnadirDocumento anadirDocumento;
 
 	@WebServlet(value = "/*", asyncSupported = true)
 	@VaadinServletConfiguration(productionMode = false, ui = Sh24consultasUI.class)
@@ -60,7 +61,6 @@ public class Sh24consultasUI extends UI {
 	        if (idsms!=null) {
 	           ServiciosUrgencia srvUrg = new ServiciosUrgencia(idsms);
 		       layout.addComponent(srvUrg);
- 
 	        }
 	        
 
@@ -80,8 +80,24 @@ public class Sh24consultasUI extends UI {
 	           gedoxLiberty.btAceptar.click();
 	           
 	        }
-			
 		}
+		
+		if (id!=null && id.equals("ADDFIL")) {
+	        // opcion gedox liberty
+			//System.out.println("Abrimos la pantalla");
+	        anadirDocumento = new AnadirDocumento();
+	        
+	        layout.addComponent(anadirDocumento);
+	        
+	        String expediente = hsRequest.getParameter("expediente");
+	        if (expediente!=null) {
+	        	anadirDocumento.txExp.setValue(expediente);
+	        	anadirDocumento.btAceptar.click();
+	           
+	           
+	        }
+			
+		}		
 
 		if (id!=null && id.equals("LISSIN")) {
 	        // opcion gedox liberty
