@@ -21,20 +21,27 @@ import org.apache.commons.codec.binary.Base64;
 import org.jdom2.Document;
 import org.jdom2.input.SAXBuilder;
 
+import com.google.gwt.dom.client.Style;
 import com.vaadin.data.Item;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.event.ItemClickEvent;
 import com.vaadin.event.ItemClickEvent.ItemClickListener;
+import com.vaadin.server.Page;
+import com.vaadin.server.ThemeResource;
+import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.CustomComponent;
+import com.vaadin.ui.Embedded;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Layout;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
@@ -154,16 +161,31 @@ public class AnadirDocumento extends CustomComponent {
 		textoLog.setWidth("100%");
 		textoLog.setReadOnly(false);
 
+		VerticalLayout hlIcono = new VerticalLayout();
+		Embedded icono = new Embedded( null, new ThemeResource("img/upload.png") ) ;
+		icono.setWidth("30px");
+		icono.setStyleName("imagen-opciones-menu");
+		hlIcono.addComponent(icono);
+		hlIcono.setWidth("100%");
+		hlIcono.setComponentAlignment(icono, Alignment.MIDDLE_CENTER);
+		
+		
+		Label lblCon = new Label("<center><b>Subir Documentación a Liberty</b><br><hr>", ContentMode.HTML);
+		lblCon.setCaptionAsHtml(true);
+		hlIcono.addComponent(lblCon);
+		
 		HorizontalLayout hl = new HorizontalLayout();
 		txExp.setEnabled(false);
-		hl.addComponent(new Label("Añadir documentación al Expediente Liberty: "));
 
+		hl.addComponent(new Label("Añadir documentación al Expediente Liberty: "));
 		hl.addComponent(txExp);
 		hl.addComponent(btAceptar);
+
+		
 		hl.setMargin(true);
 
 		HorizontalLayout hl2 = new HorizontalLayout();
-		hl2.addComponent(new Label("Seleccione la carpeta donde quiere añadir el documento: "));
+		hl2.addComponent(new Label("Seleccione la categoría a la que pertenece el documento: "));
 
 		btAceptar.setCaption("Refrescar");
 
@@ -315,8 +337,10 @@ public class AnadirDocumento extends CustomComponent {
 						
 						carpeta = rowUpload.getItemProperty("Id").getValue().toString();
 						System.out.println("Carpeta visualizar: " + carpeta);
+						btSubir.setVisible(true);
 
 					} else {
+						btSubir.setVisible(false);
 						carpeta = "";
 						upload.setVisible(false);
 						btLog.setVisible(false);
@@ -344,27 +368,29 @@ public class AnadirDocumento extends CustomComponent {
 
 		vlGlobal.setMargin(false);
 		vlGlobal.setSpacing(false);
+		vlGlobal.addComponent(hlIcono);
+		
 		vlGlobal.addComponent(hl);
 		vlGlobal.addComponent(hl2);
 
 		vlGlobal.addComponent(glLog);
-		vlGlobal.addComponent(new Label(""));
+		//vlGlobal.addComponent(new Label(""));
 
 		vlGlobal.addComponent(btLog);
 		vlGlobal.setComponentAlignment(btLog, Alignment.TOP_LEFT);
 
-		vlGlobal.addComponent(upload);
-		//vlGlobal.setComponentAlignment(upload.upload, Alignment.TOP_CENTER);
-		// vlGlobal.addComponent(textoLog);
-
-		// vlGlobal.setComponentAlignment(textoLog, Alignment.TOP_LEFT);
-		vlGlobal.addComponent(new Label());
-		vlGlobal.addComponent(new Label());
+		HorizontalLayout hlf = new HorizontalLayout();
+		hlf.addComponent(upload);
+		hlf.setMargin(true);
+		hlf.addComponent(new Label());
+		hlf.addComponent(new Label());
+		hlf.addComponent(btSubir);		
+		vlGlobal.addComponent(hlf);
 		
-		vlGlobal.addComponent(btSubir);
-		vlGlobal.setComponentAlignment(btSubir, Alignment.BOTTOM_CENTER);
-		
-		
+		btSubir.setVisible(false);
+		btSubir.setStyleName(ValoTheme.BUTTON_PRIMARY);
+		hlf.setComponentAlignment(btSubir, Alignment.BOTTOM_RIGHT);
+		hlf.setWidth("95%");
 		
 
 		hl.setHeight("10%");
@@ -378,14 +404,14 @@ public class AnadirDocumento extends CustomComponent {
 		Object[] visibleColumnsGarantias = new Object[] { "Carpeta" };
 
 		defineTable(arTabla, columnsGarantias, typesGarantias, visibleColumnsGarantias, true);
-		arTabla.setColumnHeaders(new String[] { "Carpeta" });
+		arTabla.setColumnHeaders(new String[] { "Categoría" });
 
 		// arTabla.setPageLength(10);
 		arTabla.setHeight(Integer.valueOf((int) (super.getHeight())).toString() + "px");
 		arTabla.setSelectable(true);
 		arTabla.setColumnExpandRatio("Id", 10);
 		arTabla.setColumnExpandRatio("Carpeta", 90);
-
+		arTabla.setPageLength(6);
 		// arTabla.setSizeFull();
 		arTabla.setImmediate(true);
 		arTabla.setPageLength(8);
@@ -398,20 +424,36 @@ public class AnadirDocumento extends CustomComponent {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-				System.out.println("Click Subimos el fichero");
-				upload.setImmediate(false);
+			
+				System.out.println("Categoria"+arTabla.getValue() );
 				
+
+				upload.setImmediate(false);
 				upload.submitUpload();
 			}
 		});
 		
+		
+		
 		upload.addStartedListener(new StartedListener() {
+			
 			
 			@Override
 			public void uploadStarted(StartedEvent event) {
 				// TODO Auto-generated method stub
 				System.out.println("****************** STARTED *******************");
 				System.out.println("Longitud del fichero:" +  event.getContentLength() );
+				
+				if ( event.getContentLength()==0 ) {
+					upload.interruptUpload();
+					new Notification("Error fichero",
+							"Seleccione primero un fichero a subir",
+							Notification.Type.ERROR_MESSAGE, true)
+							.show(Page.getCurrent());
+					
+					
+					
+				}
 			}
 		});
 		
@@ -502,6 +544,20 @@ public class AnadirDocumento extends CustomComponent {
 					cStmt.execute();
 					
 					System.out.println(cStmt.getObject(1));
+					
+					if ( cStmt.getObject(1).toString().equals("0") ) {
+						new Notification("Error al subir el documento",
+    							"Se ha producido un error al subir el documento",
+    							Notification.Type.ERROR_MESSAGE, true)
+    							.show(Page.getCurrent());
+					} else {
+
+						new Notification("Proceso finalizado correctamente",
+    							"Se ha subido el fichero.",
+    							Notification.Type.TRAY_NOTIFICATION, true)
+    							.show(Page.getCurrent());
+						
+					}					
 
 					HashMap retVal = new HashMap();
 					try {
@@ -515,6 +571,8 @@ public class AnadirDocumento extends CustomComponent {
 						}
 						conn = null; // prevent any future access
 					}
+					
+
 
 				} catch (Exception e) {
 					e.printStackTrace();

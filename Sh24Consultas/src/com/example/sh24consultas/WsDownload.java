@@ -20,7 +20,7 @@ public ByteArrayInputStream WsDonwload(DocsLiberty docsLiberty, String exp, Stri
 	String soapRequestXml = null;
 
 	
-	System.out.println("Entramos a WSDownload");
+	//System.out.println("Entramos a WSDownload");
 
 	soapRequestXml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:par=\"http://www.liberty.es/ws/param/\"> "+
 				   "<soapenv:Header/>  "+
@@ -67,8 +67,8 @@ public ByteArrayInputStream WsDonwload(DocsLiberty docsLiberty, String exp, Stri
 
     String documento = soapResponseXml.substring(soapResponseXml.indexOf("<content>")+9, soapResponseXml.indexOf("</content>"));
     String tipofichero = soapResponseXml.substring(soapResponseXml.indexOf("<type>")+6, soapResponseXml.indexOf("</type>"));
-    System.out.println("Respuesta documento:" + documento);
-    System.out.println("Respuesta tipo:" + tipofichero);
+    //System.out.println("Respuesta documento:" + documento);
+    //System.out.println("Respuesta tipo:" + tipofichero);
     
     docsLiberty.textoLog.setValue(tipofichero + " >>> " +  documento );
 

@@ -25,10 +25,11 @@ import com.sh24Consultas.utils.ConversionUtil;
 import com.vaadin.data.Item;
 import com.vaadin.data.Property;
 import com.vaadin.data.Property.ValueChangeEvent;
-import com.vaadin.server.BrowserWindowOpener;
 import com.vaadin.server.FileDownloader;
 import com.vaadin.server.StreamResource;
 import com.vaadin.server.StreamResource.StreamSource;
+import com.vaadin.server.ThemeResource;
+import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
@@ -43,9 +44,7 @@ import com.vaadin.ui.Table;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.TreeTable;
-import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Window;
 import com.vaadin.ui.themes.ValoTheme;
 
 public class DocsLiberty extends CustomComponent  {
@@ -118,6 +117,20 @@ public class DocsLiberty extends CustomComponent  {
 
     	textoLog.setWidth("100%");
     	textoLog.setReadOnly(false);
+    	textoLog.setVisible(false);
+
+    	VerticalLayout hlIcono = new VerticalLayout();
+		Embedded icono = new Embedded( null, new ThemeResource("img/query.png") ) ;
+		icono.setWidth("30px");
+		icono.setStyleName("imagen-opciones-menu");
+		hlIcono.addComponent(icono);
+		hlIcono.setWidth("100%");
+		hlIcono.setComponentAlignment(icono, Alignment.MIDDLE_CENTER);
+		
+		Label lblCon = new Label("<center><b>Consultar Documentación Liberty</b><br><hr>", ContentMode.HTML);
+		lblCon.setCaptionAsHtml(true);
+		
+		hlIcono.addComponent(lblCon);
 
 	    HorizontalLayout hl = new HorizontalLayout();
 	    txExp.setEnabled(false);
@@ -228,7 +241,7 @@ public class DocsLiberty extends CustomComponent  {
 				    document = saxBuilder.build(new StringReader(pContenido));
 				    
 				    
-		            System.out.println("****** DESPUES DE EJECUTAR ***********"+pContenido);
+		            //System.out.println("****** DESPUES DE EJECUTAR ***********"+pContenido);
 		            
 					if (pContenido!=null) {
 						try {
@@ -322,7 +335,7 @@ public class DocsLiberty extends CustomComponent  {
 	            		// ********* Generamos el resource del fichero
 	    				Item rowDownload = arArbol.getItem(arArbol.getValue());
 	    				nomFichero = rowDownload.getItemProperty("Documentacion").getValue().toString().replace("+", "") + "_" + rowDownload.getItemProperty("fecha").getValue().toString() + "." + rowDownload.getItemProperty("tipo").getValue().toString();
-	    				System.out.println("Nombre del fichero a visualizar: " + nomFichero);
+	    				//System.out.println("Nombre del fichero a visualizar: " + nomFichero);
 	    				
 	    				
 	    				if (downloader!=null) downloader.remove();
@@ -397,6 +410,7 @@ public class DocsLiberty extends CustomComponent  {
 
     	vlGlobal.setMargin(false);
     	vlGlobal.setSpacing(false);
+    	vlGlobal.addComponent(hlIcono);
     	vlGlobal.addComponent(hl);
 
 
@@ -439,7 +453,8 @@ public class DocsLiberty extends CustomComponent  {
 		arArbol.setColumnExpandRatio("fecha", 25);
 
 		//arArbol.setSizeFull();
-		arArbol.setImmediate(true);    
+		arArbol.setImmediate(true); 
+		arArbol.setPageLength(8);
 
 		
         setCompositionRoot(vlGlobal);
