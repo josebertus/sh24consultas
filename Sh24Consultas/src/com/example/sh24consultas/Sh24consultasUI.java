@@ -47,11 +47,11 @@ public class Sh24consultasUI extends UI {
 		Page.getCurrent().getWebBrowser().getBrowserApplication();
 		if(Page.getCurrent().getWebBrowser().isTouchDevice()){
 			UI.getCurrent().getSession().setAttribute("resolucion","grande");
-			System.out.println("Es touch");
+			//System.out.println("Es touch");
 		}
 		else {
 			UI.getCurrent().getSession().setAttribute("resolucion","pequena");
-			System.out.println("No Es touch");
+			//System.out.println("No Es touch");
 		}
 		
 		if (id!=null && id.equals("SRVURG")) {

@@ -77,7 +77,7 @@ public class AnadirDocumento extends CustomComponent {
 	                                      String mimeType) {
 	        // Create and return a file output stream
 	    	
-	    	System.out.println("______________ImageUploader_________________" + filename  );
+	    	//System.out.println("______________ImageUploader_________________" + filename  );
 	    	
 	    	outputBuffer = new ByteArrayOutputStream();
 	        return outputBuffer;
@@ -262,7 +262,7 @@ public class AnadirDocumento extends CustomComponent {
 
 						ResultSet rset = (ResultSet) cStmt.getObject(4);
 						while (rset.next()) {
-							System.out.println(rset.getString("NAME"));
+							//System.out.println(rset.getString("NAME"));
 							Object newItemId = arTabla.addItem();
 							Item row1 = arTabla.getItem(newItemId);
 							row1.getItemProperty("Id").setValue(rset.getString("ID"));
@@ -301,7 +301,7 @@ public class AnadirDocumento extends CustomComponent {
 			@Override
 			public void itemClick(ItemClickEvent event) {
 				// TODO Auto-generated method stub
-				System.out.println("**********click listener**********************");
+				//System.out.println("**********click listener**********************");
 			}
 		});
 
@@ -311,7 +311,7 @@ public class AnadirDocumento extends CustomComponent {
 
 			public void valueChange(ValueChangeEvent event) {
 				
-				System.out.println("Entramos");
+				//System.out.println("Entramos");
 				// Mostramos o ocultamos el detalle en funciÃ³n de si hemos
 				// seleccionado el registro o no
 				Item row = arTabla.getItem(arTabla.getValue());
@@ -320,6 +320,7 @@ public class AnadirDocumento extends CustomComponent {
 				if (event.getProperty().getValue() == null) {
 
 					upload.setVisible(false);
+					btSubir.setVisible(false);
 					carpeta = "";
 
 				} else {
@@ -336,7 +337,7 @@ public class AnadirDocumento extends CustomComponent {
 						//		+ rowUpload.getItemProperty("Id").getValue().toString();
 						
 						carpeta = rowUpload.getItemProperty("Id").getValue().toString();
-						System.out.println("Carpeta visualizar: " + carpeta);
+						//System.out.println("Carpeta visualizar: " + carpeta);
 						btSubir.setVisible(true);
 
 					} else {
@@ -381,12 +382,14 @@ public class AnadirDocumento extends CustomComponent {
 
 		HorizontalLayout hlf = new HorizontalLayout();
 		hlf.addComponent(upload);
+		
 		hlf.setMargin(true);
 		hlf.addComponent(new Label());
 		hlf.addComponent(new Label());
 		hlf.addComponent(btSubir);		
 		vlGlobal.addComponent(hlf);
 		
+		upload.setVisible(false);
 		btSubir.setVisible(false);
 		btSubir.setStyleName(ValoTheme.BUTTON_PRIMARY);
 		hlf.setComponentAlignment(btSubir, Alignment.BOTTOM_RIGHT);
@@ -424,10 +427,8 @@ public class AnadirDocumento extends CustomComponent {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-			
-				System.out.println("Categoria"+arTabla.getValue() );
 				
-
+				
 				upload.setImmediate(false);
 				upload.submitUpload();
 			}
@@ -441,8 +442,8 @@ public class AnadirDocumento extends CustomComponent {
 			@Override
 			public void uploadStarted(StartedEvent event) {
 				// TODO Auto-generated method stub
-				System.out.println("****************** STARTED *******************");
-				System.out.println("Longitud del fichero:" +  event.getContentLength() );
+				//System.out.println("****************** STARTED *******************");
+				//System.out.println("Longitud del fichero:" +  event.getContentLength() );
 				
 				if ( event.getContentLength()==0 ) {
 					upload.interruptUpload();
@@ -463,16 +464,16 @@ public class AnadirDocumento extends CustomComponent {
 			public void uploadFinished(FinishedEvent event) {
 				// TODO Auto-generated method stub
 		
-				System.out.println("****************** FINISHED *******************");
+				/*System.out.println("****************** FINISHED *******************");
 				
 				System.out.println("Nombredel fichero: " + event.getFilename() );
 				System.out.println("Longitud del fichero: " + event.getLength() );
 				System.out.println("Event: " + event);
-				System.out.println("Longitud del fichero: " + receiver.outputBuffer.size() );
+				System.out.println("Longitud del fichero: " + receiver.outputBuffer.size() );*/
 			    final byte[] data = receiver.outputBuffer.toByteArray();
 				Base64 enc = new Base64();
 				String encString = enc.encodeToString(data);				
-				System.out.println("Codificado:"+ encString.length());
+				//System.out.println("Codificado:"+ encString.length());
 				
 				// Aqui tenemos que llamar al Servicio para que se envié el documento
 				
@@ -543,9 +544,9 @@ public class AnadirDocumento extends CustomComponent {
 
 					cStmt.execute();
 					
-					System.out.println(cStmt.getObject(1));
+					System.out.println("El valor del resultado AL SUBIRDOC es:" + cStmt.getObject(1));
 					
-					if ( cStmt.getObject(1).toString().equals("0") ) {
+					if ( !cStmt.getObject(1).toString().equals("0") ) {
 						new Notification("Error al subir el documento",
     							"Se ha producido un error al subir el documento",
     							Notification.Type.ERROR_MESSAGE, true)

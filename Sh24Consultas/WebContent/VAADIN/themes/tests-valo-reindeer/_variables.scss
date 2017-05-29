@@ -360,18 +360,13 @@ $v-panel-border: 0;
 	color: $colorTextoCabeceraTabla;
 	}
 	
-
-
-		
 	.v-table-row{
-	background-color: $colorFondoFilaTabla1;
-	color: $colorTextoFilaTabla1;
-	height:10px;
+	   background-color: $colorFondoFilaTabla1;
+	   color: $colorTextoFilaTabla1;
 	}
 	.v-table-row-odd{
-	background-color: $colorFondoFilaTabla2;
-	color: $colorTextoFilaTabla2;
-	
+	   background-color: $colorFondoFilaTabla2;
+	   color: $colorTextoFilaTabla2;
 	}
 	
 	.v-table-row:hover, .v-table-row-odd:hover {
