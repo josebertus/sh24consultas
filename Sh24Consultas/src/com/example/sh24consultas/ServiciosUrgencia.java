@@ -68,7 +68,7 @@ public class ServiciosUrgencia extends CustomComponent  {
 	        CallableStatement cStmt=conn.prepareCall(callQuery);
 	        cStmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR); // Valor de "RETURN"
 	        cStmt.setObject (2, "select rgenvio, cdasiste, "+
-	        		" (select VALOR from exuah_paramproc where cdproceso = 'ENVIO_SMS_URG' AND CDPARAM = 'TEXTO_MSJE_URL') TEXTO" +
+	        		" (select REPLACE(VALOR,'%texto%',( select txinform from ex_asistencias where cdasiste = exuah_mensajes_enviar.cdasiste )  ) from exuah_paramproc where cdproceso = 'ENVIO_SMS_URG' AND CDPARAM = 'TEXTO_MSJE_URL') TEXTO " +
 	        		" , SWLINKPROC from exuah_mensajes_enviar" +
 	        		" where rgenvio = " + idSms.toString() );
 	        cStmt.execute();
